@@ -1,0 +1,21 @@
+{
+  "name": "ethekwini-gis-mcp",
+  "version": "1.0.0",
+  "description": "eThekwini ESRI GIS Model Context Protocol Server",
+  "main": "src/ethekwini_gis_mcp.py",
+  "scripts": {
+    "start": "python src/ethekwini_gis_mcp.py",
+    "install": "pip install -r requirements.txt",
+    "test": "python -m pytest tests/ -v"
+  },
+  "keywords": ["mcp", "gis", "esri", "ethekwini", "arcgis", "spatial-data"],
+  "author": "Bongiwe Mapipa <bongiwemapipa82@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bonnie-mapipa/ethekwini-gis-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bonnie-mapipa/ethekwini-gis-mcp/issues"
+  }
+}

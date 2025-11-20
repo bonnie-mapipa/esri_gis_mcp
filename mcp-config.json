@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "ethekwini-gis": {
+      "command": "python",
+      "args": ["src/ethekwini_gis_mcp.py"],
+      "cwd": ".",
+      "env": {
+        "ETHEKWINI_REFRESH_INTERVAL": "900",
+        "ETHEKWINI_MAX_RECORDS": "100",
+        "ETHEKWINI_TIMEOUT": "60"
+      }
+    }
+  }
+}

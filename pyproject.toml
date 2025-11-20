@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ethekwini-gis-mcp"
+version = "1.0.0"
+description = "eThekwini ESRI GIS Model Context Protocol Server"
+authors = [{name = "Bongiwe Mapipa", email = "bongiwemapipa82@gmail.com"}]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "mcp>=1.0.0",
+    "httpx>=0.25.0",
+    "asyncio-mqtt>=0.13.0",
+]
+keywords = ["mcp", "gis", "esri", "ethekwini", "arcgis", "spatial-data"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: GIS",
+]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/ethekwini-gis-mcp"
+Documentation = "https://github.com/yourusername/ethekwini-gis-mcp#readme"
+Repository = "https://github.com/yourusername/ethekwini-gis-mcp"
+"Bug Tracker" = "https://github.com/yourusername/ethekwini-gis-mcp/issues"
+
+[project.scripts]
+ethekwini-gis-mcp = "src.ethekwini_gis_mcp:main"
+
+[tool.setuptools]
+packages = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "."
