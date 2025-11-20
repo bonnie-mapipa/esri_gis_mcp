@@ -43,7 +43,23 @@ This MCP server provides seamless access to eThekwini municipality's geographic 
 - Categorized access to datasets by service type
 - Municipal-specific data structures and workflows
 
+## 🚀 Deployment Options
+
+### 1. **Standard MCP Server** (Direct Integration)
+Use with MCP-compatible clients like Claude Desktop, Azure AI Foundry, or custom applications.
+
+### 2. **Azure Function Deployment** (Cloud API)
+Deploy as a REST API for web applications and AI agents:
+- **Azure AI Foundry Integration** - Perfect for AI agent knowledge bases
+- **REST API Access** - HTTP endpoints for all MCP tools
+- **Auto-scaling** - Handles traffic spikes automatically
+- **South Africa Hosted** - Deployed in Johannesburg for optimal performance
+
+[👉 **Azure Function Setup Guide**](./azure_function/README.md)
+
 ## Installation
+
+### Standard MCP Installation
 
 1. **Clone the repository:**
 ```bash
@@ -246,6 +262,31 @@ When new datasets are added to the eThekwini portal:
 - **Smart Caching**: Reduces API calls and improves response times
 - **Query Optimization**: Efficient parameter handling and result processing
 - **Connection Pooling**: Reuses HTTP connections for better performance
+
+## 🤖 Azure AI Foundry Integration
+
+The Azure Function deployment enables seamless integration with Azure AI Foundry agents:
+
+### Quick Setup
+1. **Deploy Function**: Use `./azure_function/deploy.bat` (Windows) or `./azure_function/deploy.sh` (Linux/macOS)
+2. **Create AI Agent**: Add the function URL as a custom skill in Azure AI Foundry
+3. **Configure Authentication**: Use function keys for secure access
+
+### Example Agent Capabilities
+```
+🗺️ "Show me transport datasets in eThekwini"
+📍 "Find municipal boundaries near coordinates -29.8587, 31.0218"
+📊 "Get statistics for the water infrastructure dataset"
+🔍 "Search for datasets containing 'environmental' data"
+```
+
+### Function Endpoints
+- `GET /api/datasets` - List all datasets
+- `POST /api/datasets/{id}/query` - Query specific dataset
+- `POST /api/datasets/{id}/spatial` - Spatial queries
+- `GET /api/search?q={term}` - Search datasets
+
+[📚 **Complete Azure Function Documentation**](./azure_function/README.md)
 
 ## Contributing
 

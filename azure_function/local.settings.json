@@ -1,0 +1,13 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "FUNCTIONS_EXTENSION_VERSION": "~4",
+    "ETHEKWINI_REFRESH_INTERVAL": "900",
+    "ETHEKWINI_MAX_RECORDS": "100",
+    "ETHEKWINI_TIMEOUT": "60",
+    "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING": "",
+    "WEBSITE_CONTENTSHARE": ""
+  }
+}
