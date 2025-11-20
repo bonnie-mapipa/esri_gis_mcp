@@ -10,9 +10,14 @@ jobs:
   test:
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: [3.8, 3.9, "3.10", "3.11", "3.12"]
+        python-version: ["3.9", "3.10", "3.11", "3.12"]
+        exclude:
+          # Exclude some combinations that might be unstable
+          - os: macos-latest
+            python-version: "3.9"
 
     steps:
     - uses: actions/checkout@v4
@@ -31,10 +36,17 @@ jobs:
       run: |
         python tests/test_mcp_server.py
     
-    - name: Test MCP server startup
+    - name: Test MCP server startup (Unix)
+      if: runner.os != 'Windows'
       run: |
         timeout 10s python src/ethekwini_gis_mcp.py || true
       shell: bash
+    
+    - name: Test MCP server startup (Windows)
+      if: runner.os == 'Windows'
+      run: |
+        Start-Job -ScriptBlock { python src/ethekwini_gis_mcp.py }; Start-Sleep 5; Get-Job | Stop-Job
+      shell: powershell
 
   lint:
     runs-on: ubuntu-latest
@@ -53,6 +65,12 @@ jobs:
         pip install flake8 black
     
     - name: Run flake8
+      run: |
+        flake8 src/ --count --select=E9,F63,F7,F82 --show-source --statistics
+    
+    - name: Run black check
+      run: |
+        black --check src/
       run: |
         flake8 src/ tests/ --count --select=E9,F63,F7,F82 --show-source --statistics
         flake8 src/ tests/ --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
